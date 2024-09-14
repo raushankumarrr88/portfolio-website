@@ -25,6 +25,9 @@ class SkillsListView(ListView):
     template_name = "skills.html"
     context_object_name = "skills"
 
+    def get_queryset(self):
+        return Skills.objects.all()
+
 
 class ProjectsListView(ListView):
     model = Projects

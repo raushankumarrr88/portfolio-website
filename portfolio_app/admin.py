@@ -1,10 +1,12 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+
 from portfolio_app.models import User, Education, Experience, Skills, Projects, SocialMedia
 
 
 @admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name", "birth_date")
+class MyUserAdmin(UserAdmin):
+    list_display = ("username", "first_name", "last_name", "birth_date")
     search_fields = ("first_name", "last_name", "about", "information")
 
 
@@ -24,8 +26,14 @@ class ExperienceAdmin(admin.ModelAdmin):
 
 @admin.register(Skills)
 class SkillsAdmin(admin.ModelAdmin):
-    list_display = ("name", "description")
+    list_display = ("name", "description", "owner")
     search_fields = ("name", "description")
+    exclude = ('owner',)
+
+    def save_model(self, request, obj, form, change):
+        if not obj.owner:
+            obj.owner = request.user
+        super().save_model(request, obj, form, change)
 
 
 @admin.register(Projects)

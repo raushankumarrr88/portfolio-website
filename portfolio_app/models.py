@@ -1,7 +1,10 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from portfolio import settings
 
-class User(models.Model):
+
+class User(AbstractUser):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50, null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
@@ -34,7 +37,9 @@ class Experience(models.Model):
 class Skills(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_skills")
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user_skills", null=True, blank=True
+    )
 
 
 class Projects(models.Model):
