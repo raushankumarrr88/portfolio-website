@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %}Skills{% endblock %}
 
 {% block content %}
     <div class="page">
-        <main class="skills-main">
-            <div class="skills-section">
-                <div class="header">
-                    <div class="text">My Skills</div>
-                    <div class="border-line"></div>
+        <main class="main-section">
+            <div class="content-section">
+                <div class="header-text">
+                    <div class="main-container">My Skills</div>
+
                 </div>
-                <div class="skills">
+                <div class="container-around">
                     {% for skill in skills %}
-                    <div class="skills-group-row">
-                        <div class="skills-group-header">{{ skill.name }}</div>
+                    <div class="main-container fit-content">
+                        <div class="container-text-center">{{ skill.name }}</div>
                         {% if skill.description %}
-                        <div>">{{ skill.description }}</div>
+                        <div>{{ skill.description }}</div>
                         {% endif %}
                     </div>
                     {% endfor %}

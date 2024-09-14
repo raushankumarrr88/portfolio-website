@@ -14,9 +14,9 @@ img {
 }
 
 :root {
-	--bg-color: radial-gradient(circle at 70% 50%, rgba(238, 174, 202, 1) 0%, rgb(145, 167, 192) 100%);
-	--text-color: #363636;
-	--main-color: brown;
+	--bg-color: radial-gradient(circle at 70% 50%, rgba(236, 5, 136, 0.85) 0%, rgb(179, 3, 245) 100%);
+	--text-color: black;
+	--main-color: #fdeaea;
 }
 
 body {
@@ -352,52 +352,79 @@ header {
 	}
 }
 
-.skills-main {
-    width: 100%;
+.main-section {
     padding-top: 95px;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-.skills-section .header {
+.header-text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-bottom: 40px;
 	font-size: 1.5rem;
     font-weight: 600;
+	color: #fdeaea;
 }
 
-.border-line {
-    width: 140px;
-    height: 4px;
-    border-radius: 100px;
-    background-color: var(--main-color);
+.h2-name {
+	color: #fdeaea;
+	font-size: 1.2em;
+	font-weight: 600;
 }
 
-.skills-section {
+.h3-name {
+	color: #fdeaea;
+	font-weight: 400;
+}
+
+.h4-name {
+	color: black;
+	font-size: 0.8em;
+}
+
+.left-space {
+	padding-left: 10px;
+}
+
+.bottom-space {
+	padding-bottom: 10px;
+}
+
+.main-container {
+	border: 2px solid #161515;
+	border-radius: 10px;
+	padding: 5px 10px 5px 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	background: rgba(7, 0, 0, 0.35);
+	backdrop-filter: blur(4px);
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.content-section {
 	width: 1000px;
+	padding-bottom: 10px;
 }
 
-.skills {
+.container-around {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	flex-wrap: wrap;
 	row-gap: 30px;
+	column-gap: 20px;
 }
 
-.skills-group-row {
-	width: 400px;
-	border: 2px solid #ccc;
-	border-radius: 10px;
-	margin: 0 20px;
-	padding: 20px 10px 10px 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	background: rgba(255, 255, 255, 0.1);
-	backdrop-filter: blur(4px);
+.big {
+	width: 80%;
+	min-height: 150px;
+}
+
+.fit-content {
+	width: fit-content;
+	height: 40px;
 }
 
 @media (max-width: 700px) {
@@ -407,16 +434,11 @@ header {
 	}
 }
 
-.skills-group-header {
+.container-text-center {
 	width: fit-content;
 	margin: 0 auto;
 }
 
-
-html, body {
-    height: 100%;
-    overflow-y: auto;
-}
 
 .page {
 	min-height: 100vh;
@@ -425,11 +447,7 @@ html, body {
 	justify-content: space-between;
 }
 
-.content {
-    flex-grow: 1;
-	height: calc(100vh - 50px);
-	padding-bottom: 50px;
-}
+
 
 .footer {
 	width: 100%;
