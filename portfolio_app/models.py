@@ -18,7 +18,7 @@ class Education(models.Model):
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_educations")
 
 
 class Experience(models.Model):
@@ -28,21 +28,23 @@ class Experience(models.Model):
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_experiences")
 
 
 class Skills(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_skills")
 
 
 class Projects(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    experience = models.ForeignKey(Experience, on_delete=models.CASCADE, null=True, blank=True)
-    skills = models.ManyToManyField(Skills, null=True, blank=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_projects")
+    experience = models.ForeignKey(
+        Experience, on_delete=models.CASCADE, null=True, blank=True, related_name="project_experiences"
+    )
+    skills = models.ManyToManyField(Skills, blank=True, related_name="project_skills")
     date = models.DateField(null=True, blank=True)
     media = models.URLField(null=True, blank=True)
 
@@ -50,5 +52,5 @@ class Projects(models.Model):
 class SocialMedia(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_social_media")
     media = models.URLField(null=True, blank=True)

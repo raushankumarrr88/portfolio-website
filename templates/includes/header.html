@@ -1,0 +1,25 @@
+<header class="header" id="header">
+    <a href="{% url 'portfolio:index' %}" class="logo">
+        <span class="main-icon"></span>
+        <span>Alona</span>
+    </a>
+
+    <div class="navbar">
+        <a href="{% url 'portfolio:index' %}" class="active">Home</a>
+        <a href="{% url 'portfolio:skills' %}">Skills</a>
+        <a href="{% url 'portfolio:education' %}">Education</a>
+        <a href="{% url 'portfolio:projects' %}">Projects</a>
+        <a href="{% url 'portfolio:experience' %}">Experience</a>
+        <a href="#">Hobbies</a>
+        <a href="#">Testimonials</a>
+    </div>
+
+    <div class="main">
+        <a href="#" class="user main-items">
+            <i class="fas fa-envelope cm-icon"></i>Contact Me
+        </a>
+        <div class="main-items menu-icon-container" id="menu-icon-js">
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </div>
+</header>
