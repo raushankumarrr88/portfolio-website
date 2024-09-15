@@ -1,3 +1,4 @@
+from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
@@ -11,24 +12,23 @@ class MyUserAdmin(UserAdmin):
 
 
 @admin.register(Education)
-class EducationAdmin(admin.ModelAdmin):
-    list_display = ("institution", "field_of_study", "degree", "start_date", "end_date")
-    search_fields = ("institution", "field_of_study", "degree")
-    list_filter = ("start_date", "end_date")
+class EducationAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("institution", "field_of_study", "degree", "start_date", "end_date", "order")
+    list_editable = ("order",)
 
 
 @admin.register(Experience)
-class ExperienceAdmin(admin.ModelAdmin):
-    list_display = ("company", "profession", "start_date", "end_date")
-    search_fields = ("company", "profession")
-    list_filter = ("start_date", "end_date")
+class ExperienceAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("company", "profession", "start_date", "end_date", "order")
+    list_editable = ("order",)
 
 
 @admin.register(Skills)
-class SkillsAdmin(admin.ModelAdmin):
-    list_display = ("name", "description", "owner")
+class SkillsAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("name", "description", "owner", "order")
     search_fields = ("name", "description")
-    exclude = ('owner',)
+    exclude = ("owner",)
+    list_editable = ("order",)
 
     def save_model(self, request, obj, form, change):
         if not obj.owner:
@@ -37,14 +37,15 @@ class SkillsAdmin(admin.ModelAdmin):
 
 
 @admin.register(Projects)
-class ProjectsAdmin(admin.ModelAdmin):
-    list_display = ("name", "date", "media")
+class ProjectsAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("name", "date", "media", "order")
     search_fields = ("name", "description")
     list_filter = ("date",)
     filter_horizontal = ("skills",)
+    list_editable = ("order",)
 
 
 @admin.register(SocialMedia)
-class SocialMediaAdmin(admin.ModelAdmin):
-    list_display = ("name", "media")
-    search_fields = ("name", "description")
+class SocialMediaAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("name", "media", "order")
+    list_editable = ("order",)

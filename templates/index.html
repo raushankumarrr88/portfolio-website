@@ -5,22 +5,29 @@
 
 {% block content %}
 <div class="page">
-    <section class="about" id="about">
-        <div class="about-content">
-            <div class="column right">
-                <img src="{% static 'Assets/main-image.jpg' %}" alt="Main Image">
-            </div>
-            <div class="column left">
-                <div class="text">My name is Alona</div>
-                <p>
-                    I am Python Developer and Data Analyst
-                </p>
-                <div class="buttons">
-                    <a href="#">Download CV</a>
-                    <a href="#" class="cm-button">Contact Me</a>
-                </div>
-            </div>
+  <section class="about" id="about">
+    <div class="about-content">
+      <div class="column right">
+        <img src="{% static 'Assets/alona.jpeg' %}" alt="Main Image">
+      </div>
+      <div class="column left">
+        <div class="text">My name is Alona</div>
+        <div class="introduction-text main-container h3-name">
+          Results-oriented Python Developer with a technical education in telecommunication networks and systems and two
+          years of practice in Web Development and Data Analytics, ready to implement knowledge and
+          practical skills in a company with a friendly team. I have an UpperIntermediate level of English and strong
+          knowledge of Python, Django-ORM, API, OOP, SQL, HTML/CSS, Docker, Git, etc. My work experience in IT spans
+          about 10 years and covers various fields, including hardware testing, information recovery, system
+          administration, web design, user helpdesk, and IT department management. High interest in programming and web
+          design led me to choose Python Development. I am really motivated by achieved results, the journey to reach
+          them, personal growth, and a sense of stability.
         </div>
-    </section>
+        <div class="buttons">
+          <a href="#">Download CV</a>
+          <a href="#" class="cm-button">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 {% endblock %}

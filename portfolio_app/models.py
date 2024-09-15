@@ -22,6 +22,10 @@ class Education(models.Model):
     end_date = models.DateField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_educations")
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order"]
 
 
 class Experience(models.Model):
@@ -32,6 +36,10 @@ class Experience(models.Model):
     end_date = models.DateField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_experiences")
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order"]
 
 
 class Skills(models.Model):
@@ -40,6 +48,10 @@ class Skills(models.Model):
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user_skills", null=True, blank=True
     )
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order"]
 
 
 class Projects(models.Model):
@@ -52,6 +64,10 @@ class Projects(models.Model):
     skills = models.ManyToManyField(Skills, blank=True, related_name="project_skills")
     date = models.DateField(null=True, blank=True)
     media = models.URLField(null=True, blank=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order"]
 
 
 class SocialMedia(models.Model):
@@ -59,3 +75,7 @@ class SocialMedia(models.Model):
     description = models.TextField(null=True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_social_media")
     media = models.URLField(null=True, blank=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order"]

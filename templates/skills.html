@@ -14,10 +14,7 @@
                 <div class="container-around">
                     {% for skill in skills %}
                     <div class="main-container fit-content">
-                        <div class="container-text-center">{{ skill.name }}</div>
-                        {% if skill.description %}
-                        <div>{{ skill.description }}</div>
-                        {% endif %}
+                        <div class="container-text-center h3-name">{{ skill.name }}</div>
                     </div>
                     {% endfor %}
                 </div>

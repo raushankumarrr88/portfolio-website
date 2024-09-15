@@ -17,6 +17,21 @@ navtc.onclick = () => {
 	navtc.classList.remove("nav-LR-TC");
 }
 
+// Выбираем все элементы меню
+let navbarItems = document.querySelectorAll('.navbar-item');
+
+navbarItems.forEach(item => {
+    item.addEventListener('click', function() {
+        console.log('Элемент нажат:', this.textContent); // Проверка, что клик срабатывает
+        navbarItems.forEach(el => el.classList.remove('active'));
+        this.classList.add('active');
+        console.log('Класс добавлен:', this.classList); // Проверка добавления класса
+    });
+});
+
+
+
+
 /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function () {
