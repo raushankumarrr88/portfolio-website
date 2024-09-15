@@ -24,11 +24,13 @@ class ExperienceAdmin(SortableAdminMixin, admin.ModelAdmin):
 
 
 @admin.register(Skills)
-class SkillsAdmin(SortableAdminMixin, admin.ModelAdmin):
+class SkillsAdmin(admin.ModelAdmin):
     list_display = ("name", "description", "owner", "order")
     search_fields = ("name", "description")
     exclude = ("owner",)
     list_editable = ("order",)
+    fields = ("name", "description", "order")
+    readonly_fields = ()
 
     def save_model(self, request, obj, form, change):
         if not obj.owner:

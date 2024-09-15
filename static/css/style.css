@@ -377,6 +377,13 @@ header {
     color: red !important;
 }
 
+#container1 {
+        min-width: 800px;
+        max-width: 1200px;
+        height: 70vh;
+        margin: 0 auto;
+    }
+
 .introduction-text {
 	text-align: justify;
 }
