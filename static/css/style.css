@@ -493,8 +493,6 @@ header {
 	justify-content: space-between;
 }
 
-
-
 .footer {
 	width: 100%;
 	height: 50px;
@@ -559,4 +557,53 @@ header {
 		flex-direction: column;
 		row-gap: 10px;
 	}
+}
+@keyframes moveToCenter {
+    from {
+        opacity: 0;
+        transform: translateY(100px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.main-container.appear {
+    animation: moveToCenter 1s forwards;
+}
+
+.main-container:hover {
+    transform: scale(1.1) !important;
+}
+
+.education-description {
+    display: none;
+    margin-top: 10px;
+}
+
+.main-container.selected {
+    width: 93%;
+}
+
+.main-container.selected:hover {
+    transform: none !important;
+}
+
+.main-container.selected .education-description {
+    display: block;
+}
+
+.close-btn {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.main-container.selected .close-btn {
+    display: block;
 }

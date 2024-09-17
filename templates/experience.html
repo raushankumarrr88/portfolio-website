@@ -13,10 +13,10 @@
                 </div>
                 <div class="container-around">
                     {% for experience in experiences %}
-                    <div class="header-container big">
+                    <div class="main-container big">
                         <div>
-                            <div class="h2-name">{{ experience.profession }}, </div>
-                        <div class="h3-name left-space">{{ experience.company }}</div>
+                            <div class="h2-name bottom-space">{{ experience.profession }}</div>
+                        <div class="h3-name">{{ experience.company }}</div>
                         </div>
                         <div class="bottom-space">
 
@@ -26,7 +26,8 @@
                         </div>
 
 
-                        <div class="h3-name">{{ experience.description|safe }}</div>
+                        <div class="education-description h3-name">{{ experience.description|safe }}</div>
+          <div class="close-btn" style="display:none;">X</div>
 
                     </div>
                     {% endfor %}

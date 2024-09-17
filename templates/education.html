@@ -5,60 +5,6 @@
 
 {% block content %}
 
-<style>
-    @keyframes moveToCenter {
-        from {
-            opacity: 0;
-            transform: translateY(100px) scale(0.8);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-
-    .main-container.appear {
-        animation: moveToCenter 1s forwards;
-    }
-
-    .main-container:hover {
-        transform: scale(1.1) !important;
-    }
-
-    .education-description {
-        display: none;
-        margin-top: 10px;
-    }
-
-    .main-container.selected {
-        width: 93%;
-    }
-
-    .main-container.selected:hover {
-        transform: none !important;
-    }
-
-    .main-container.selected .education-description {
-        display: block;
-    }
-
-    .close-btn {
-        display: none;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        color: white;
-        cursor: pointer;
-        z-index: 10;
-    }
-
-    .main-container.selected .close-btn {
-        display: block;
-    }
-
-
-
-</style>
 
 <div class="page">
   <main class="main-section">
@@ -88,61 +34,5 @@
   </main>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const blocks = document.querySelectorAll(".main-container");
-    const container = document.querySelector(".container-around");
-
-    const colors = ['#571301', '#3a0157', '#011230', '#570143'];
-
-    const initialOrder = Array.from(blocks);
-    let currentOrder = Array.from(initialOrder);
-
-    blocks.forEach((block, index) => {
-        block.style.backgroundColor = colors[index % colors.length];
-
-        setTimeout(() => {
-            block.classList.add("appear");
-        }, index * 200);
-
-        const closeBtn = block.querySelector(".close-btn");
-
-        block.addEventListener("click", function () {
-            blocks.forEach(b => {
-                b.classList.remove("selected");
-                const btn = b.querySelector(".close-btn");
-                btn.style.display = 'none';
-            });
-
-            currentOrder = currentOrder.filter(b => b !== this);
-
-            container.prepend(this);
-
-            requestAnimationFrame(() => {
-                this.classList.add("selected");
-                closeBtn.style.display = 'block';
-
-                currentOrder.forEach(b => {
-                    container.append(b);
-                });
-
-                currentOrder = Array.from(initialOrder);
-            });
-        });
-
-        closeBtn.addEventListener("click", function (e) {
-            e.stopPropagation();
-            block.classList.remove("selected");
-            closeBtn.style.display = 'none';
-
-            initialOrder.forEach(b => {
-                container.append(b);
-            });
-        });
-    });
-});
-
-
-</script>
 
 {% endblock %}
