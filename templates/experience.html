@@ -8,15 +8,15 @@
         <main class="main-section">
             <div class="content-section">
                 <div class="header-text">
-                    <div class="main-container">Experience</div>
+                    <div class="header-container">Experience</div>
 
                 </div>
                 <div class="container-around">
                     {% for experience in experiences %}
-                    <div class="main-container big">
+                    <div class="header-container big">
                         <div>
-                            <span class="h2-name">{{ experience.profession }}, </span>
-                        <span class="h3-name left-space">{{ experience.company }}</span>
+                            <div class="h2-name">{{ experience.profession }}, </div>
+                        <div class="h3-name left-space">{{ experience.company }}</div>
                         </div>
                         <div class="bottom-space">
 

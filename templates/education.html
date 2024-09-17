@@ -4,38 +4,122 @@
 {% block title %}Education{% endblock %}
 
 {% block content %}
-    <div class="page">
-        <main class="main-section">
-            <div class="content-section">
-                <div class="header-text">
-                    <div class="main-container">Education</div>
 
-                </div>
-                <div class="container-around">
-                    {% for education in educations %}
-                    <div class="main-container big">
-                        <div>
-                            <span class="h2-name">{{ education.field_of_study }}, </span>
-                        <span class="h3-name left-space">{{ education.institution }}</span>
-                        </div>
-                        <div class="bottom-space">
+<style>
+    @keyframes moveToCenter {
+        from {
+            opacity: 0;
+            transform: translateY(100px) scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
 
-                        <span class="h4-name">{{ education.start_date|date:"m/Y" }} - </span>
-                        <span class="h4-name">{{ education.end_date|date:"m/Y" }}, </span>
-                            <span class="h4-name left-space">{{ education.degree }}, </span>
-                        <span class="h4-name left-space">{{ education.location }}</span>
-                        </div>
+    .main-container.appear {
+        animation: moveToCenter 1s forwards;
+    }
+
+    .main-container:hover {
+        transform: scale(1.1) !important;
+    }
+
+    .education-description {
+        display: none;
+        margin-top: 10px;
+    }
+
+    .main-container.selected {
+        width: 93%;
+    }
+
+    .main-container.selected:hover {
+        transform: none !important;
+    }
+
+    .main-container.selected .education-description {
+        display: block;
+    }
+
+    .close-btn {
+        display: none;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .main-container.selected .close-btn {
+        display: block;
+    }
 
 
-                        <div class="h3-name">{{ education.description|safe }}</div>
+</style>
 
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </main>
+<div class="page">
+  <main class="main-section">
+    <div class="content-section">
+      <div class="header-text">
+        <div class="header-container">Education</div>
+      </div>
+      <div class="container-around">
+        {% for education in educations %}
+        <div class="main-container big">
+          <div>
+            <div class="h2-name bottom-space">{{ education.field_of_study }}</div>
+            <div class="h3-name">{{ education.institution }}</div>
+          </div>
+          <div class="bottom-space">
+            <span class="h4-name">{{ education.start_date|date:"m/Y" }} - </span>
+            <span class="h4-name">{{ education.end_date|date:"m/Y" }}, </span>
+            <span class="h4-name left-space">{{ education.degree }}, </span>
+            <span class="h4-name left-space">{{ education.location }}</span>
+          </div>
+          <div class="education-description h3-name">{{ education.description|safe }}</div>
+          <div class="close-btn" style="display:none;">X</div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
+  </main>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const blocks = document.querySelectorAll(".main-container");
+        const container = document.querySelector(".container-around");
+
+        const colors = ['#571301', '#3a0157', '#011230', '#570143'];
+
+        blocks.forEach((block, index) => {
+            block.style.backgroundColor = colors[index % colors.length];
+
+            setTimeout(() => {
+                block.classList.add("appear");
+            }, index * 200);
+
+            block.addEventListener("click", function () {
+                blocks.forEach(b => {
+                    b.classList.remove("selected");
+                });
+                container.prepend(this);
+                this.classList.add("selected");
+                closeBtn.style.display = 'block';
+
+            });
+            const closeBtn = block.querySelector(".close-btn");
+
+            closeBtn.addEventListener("click", function (e) {
+                e.stopPropagation();
+                block.classList.remove("selected");
+                closeBtn.style.display = 'none';
+            });
+
+        });
+    });
+</script>
 
 {% endblock %}
-
-

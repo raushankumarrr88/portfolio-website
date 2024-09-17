@@ -16,7 +16,7 @@ img {
 :root {
 	--bg-color: radial-gradient(circle at 70% 50%, rgba(236, 5, 136, 0.85) 0%, rgb(179, 3, 245) 100%);
 	--text-color: black;
-	--main-color: #fdeaea;
+	--main-color: #ffdcef;
 	--secondary-color: #e9c5e6;
 	--shadow-light: rgba(233, 197, 230, 1);
 	--shadow-dark: rgb(12, 12, 12, 1);
@@ -63,6 +63,8 @@ header {
 
 .navbar {
 	display: flex;
+	color: var(--main-color);
+	transform: scale(1.1);
 }
 
 .navbar a {
@@ -84,21 +86,13 @@ header {
 	width: 0px;
 	height: 2px;
 	border-radius: 10px;
-	background-color: var(--text-color);
 	transition: all 0.3s ease;
-	opacity: 0;
 }
 
 .navbar a:hover::before {
 	width: 100%;
-	opacity: 1;
+	background-color: #000000;
 }
-
-.navbar a:hover {
-	color: var(--main-color);
-	transform: scale(1.1);
-}
-
 
 
 .header .main {
@@ -418,10 +412,10 @@ header {
 }
 
 .h4-name {
-	color: black;
-	text-shadow: 0 0 5px var(--shadow-light);
+	color: var(--secondary-color);
+	text-shadow: 0 0 5px var(--shadow-dark);
 	font-size: 0.8em;
-	font-weight: 700;
+	font-weight: 400;
 }
 
 .left-space {
@@ -432,7 +426,7 @@ header {
 	padding-bottom: 10px;
 }
 
-.main-container {
+.header-container {
 	border: 2px solid #161515;
 	border-radius: 10px;
 	padding: 5px 10px 5px 10px;
@@ -443,9 +437,20 @@ header {
 	margin: 0 auto;
 }
 
+.main-container {
+	opacity: 0;
+	border: 2px solid #161515;
+	border-radius: 10px;
+	padding: 5px 10px 5px 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(4px);
+	margin: 0 auto;
+}
+
 .content-section {
 	width: 1000px;
 	padding-bottom: 10px;
+
 }
 
 .container-around {
@@ -455,11 +460,12 @@ header {
 	flex-wrap: wrap;
 	row-gap: 30px;
 	column-gap: 20px;
+
 }
 
 .big {
-	width: 80%;
-	min-height: 150px;
+	min-width: 400px;
+	min-height: 100px;
 }
 
 .fit-content {
