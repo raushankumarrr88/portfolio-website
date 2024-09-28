@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from django.views.generic import ListView
 
@@ -5,7 +6,14 @@ from portfolio_app.models import Education, Experience, Skills, Projects
 
 
 def index(request):
-    return render(request, "index.html")
+    user_model = get_user_model()
+    user = user_model .objects.first()
+    user_info = [
+        f"Hi! My name is {user.first_name} :)",
+        user.about,
+    ]
+
+    return render(request, "index.html", {"user_info": user_info})
 
 
 class EducationListView(ListView):

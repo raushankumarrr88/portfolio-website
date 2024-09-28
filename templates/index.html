@@ -4,30 +4,43 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
+
+
 <div class="page">
-  <section class="about" id="about">
-    <div class="about-content">
-      <div class="column right">
-        <img src="{% static 'Assets/alona.jpeg' %}" alt="Main Image">
+  <main class="main-section">
+    <div class="content-section">
+      <div class="header-text">
+        <div class="header-container">Home</div>
       </div>
-      <div class="column left">
-        <div class="text">My name is Alona</div>
-        <div class="introduction-text header-container h3-name">
-          Results-oriented Python Developer with a technical education in telecommunication networks and systems and two
-          years of practice in Web Development and Data Analytics, ready to implement knowledge and
-          practical skills in a company with a friendly team. I have an UpperIntermediate level of English and strong
-          knowledge of Python, Django-ORM, API, OOP, SQL, HTML/CSS, Docker, Git, etc. My work experience in IT spans
-          about 10 years and covers various fields, including hardware testing, information recovery, system
-          administration, web design, user helpdesk, and IT department management. High interest in programming and web
-          design led me to choose Python Development. I am really motivated by achieved results, the journey to reach
-          them, personal growth, and a sense of stability.
+
+      <div class="container-around-main-page">
+
+        <div class="main-container-main-page">
+
+          <img id="main-page-image" class="img" src="{% static 'Assets/alona.jpeg' %}" alt="Main Image">
         </div>
-        <div class="buttons">
-          <a href="#">Download CV</a>
-          <a href="#" class="cm-button">Contact Me</a>
+
+        <div class="main-container-main-page">
+
+          <div class="container-around">
+
+            {% for info in user_info %}
+            <div class="main-container no-pointer info-blocks main-page-blocks">
+              <div class="h3-name">{{ info }}</div>
+              <div class="close-btn" style="display:none;">X</div>
+            </div>
+            {% endfor %}
+          </div>
+
         </div>
+
+
+
+
       </div>
+
+
     </div>
-  </section>
+  </main>
 </div>
 {% endblock %}

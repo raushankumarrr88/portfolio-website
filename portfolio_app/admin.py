@@ -7,8 +7,12 @@ from portfolio_app.models import User, Education, Experience, Skills, Projects, 
 
 @admin.register(User)
 class MyUserAdmin(UserAdmin):
-    list_display = ("username", "first_name", "last_name", "birth_date")
+    list_display = ("username", "first_name", "last_name", "birth_date", "about")
     search_fields = ("first_name", "last_name", "about", "information")
+    fieldsets = (
+        (None, {"fields": ("username", "password")}),
+        ("Personal info", {"fields": ("first_name", "last_name", "birth_date", "about")}),
+    )
 
 
 @admin.register(Education)
