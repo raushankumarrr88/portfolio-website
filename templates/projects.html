@@ -17,13 +17,17 @@
         <div class="main-container big">
           <div>
             <div class="h2-name bottom-space">{{ project.name }}</div>
-            <div class="h3-name">{{ project.type }}</div>
+            <div class="h3-name rainbow-text">{{ project.type }}</div>
           </div>
           <div class="bottom-space">
             <span class="h4-name">{{ project.date }}</span>
-
           </div>
-          <div class="education-description h3-name">{{ project.description|safe }}</div>
+          <div class="education-description h3-name bottom-space">{{ project.description|safe }}</div>
+
+            <span class="h4-name">
+              Github reference: <a href="{{ project.github }}" target="_blank"> here</a>
+            </span>
+
 
 
           <div class="close-btn" style="display:none;">X</div>
