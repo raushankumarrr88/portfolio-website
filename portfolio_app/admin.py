@@ -2,7 +2,7 @@ from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from portfolio_app.models import User, Education, Experience, Skills, Projects, SocialMedia
+from portfolio_app.models import User, Education, Experience, Skills, Projects, SocialMedia, Languages
 
 
 @admin.register(User)
@@ -44,10 +44,15 @@ class SkillsAdmin(admin.ModelAdmin):
 
 @admin.register(Projects)
 class ProjectsAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ("name", "date", "media", "order")
-    search_fields = ("name", "description")
+    list_display = ("name", "date", "type", "order")
+    search_fields = ("type", "name")
     list_filter = ("date",)
-    filter_horizontal = ("skills",)
+    list_editable = ("order",)
+
+
+@admin.register(Languages)
+class LanguagesAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("name", "level", "order")
     list_editable = ("order",)
 
 

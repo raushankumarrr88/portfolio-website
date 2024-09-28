@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from portfolio_app.models import Education, Experience, Skills, Projects
+from portfolio_app.models import Education, Experience, Skills, Projects, Languages
 
 
 def index(request):
@@ -50,3 +50,12 @@ class ProjectsListView(ListView):
 
     def get_queryset(self):
         return Projects.objects.all().order_by("order")
+
+
+class LanguagesListView(ListView):
+    model = Languages
+    template_name = "languages.html"
+    context_object_name = "languages"
+
+    def get_queryset(self):
+        return Languages.objects.all().order_by("order")

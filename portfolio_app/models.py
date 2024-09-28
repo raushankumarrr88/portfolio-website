@@ -55,15 +55,13 @@ class Skills(models.Model):
 
 
 class Projects(models.Model):
+    type = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_projects")
-    experience = models.ForeignKey(
-        Experience, on_delete=models.CASCADE, null=True, blank=True, related_name="project_experiences"
-    )
-    skills = models.ManyToManyField(Skills, blank=True, related_name="project_skills")
     date = models.DateField(null=True, blank=True)
-    media = models.URLField(null=True, blank=True)
+    github = models.URLField(null=True, blank=True)
+    use = models.URLField(null=True, blank=True)
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
@@ -75,6 +73,17 @@ class SocialMedia(models.Model):
     description = models.TextField(null=True, blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_social_media")
     media = models.URLField(null=True, blank=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order"]
+
+
+class Languages(models.Model):
+    name = models.CharField(max_length=55)
+    level = models.CharField(max_length=55, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_languages")
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
