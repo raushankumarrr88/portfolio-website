@@ -29,95 +29,62 @@
 }
 
 body {
+	width: 100%;
 	min-height: 100vh;
 	background: var(--bg-color);
 	color: var(--text-color);
 }
 
-header {
-	position: fixed;
+.color1 {
+	color: var(--main-color);
+}
+
+.header {
 	width: 100%;
+	height: 70px;
+	padding: 20px 10px;
+	border-bottom: 2px solid #ccc;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(14px);
+	position: fixed;
 	top: 0;
-	right: 0;
-	z-index: 117;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	background: transparent;
-	padding: 28px 0px;
-	transition: all .50s ease;
-}
-
-.logo {
-	display: flex;
-	align-items: center;
-}
-
-.logo .main-icon {
-	width: 0.7rem;
-	height: 1.7rem;
-	margin-right: 5px;
-	background-color: var(--main-color);
-	border-radius: 50px;
-}
-
-.logo span {
-	color: var(--text-color);
-	font-size: 1.7rem;
-	font-weight: 600;
+	left: 0;
+	z-index: 1000;
 }
 
 .navbar {
 	display: flex;
 	color: var(--main-color);
-	transform: scale(1.1);
+	width: 80%;
+	justify-content: center;
+	text-align: justify;
+	gap: 10px;
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .navbar a {
 	position: relative;
 	color: var(--text-color);
-	font-size: 1.1rem;
+	font-size: 1.3rem;
 	font-weight: 600;
-	padding: 5px 0;
-	margin: 0px 20px;
-	transition: all .50s ease;
-	display: flex;
-	justify-content: center;
-}
-
-.navbar a::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	width: 0px;
-	height: 2px;
-	border-radius: 10px;
-	transition: all 0.3s ease;
-}
-
-.navbar a:hover::before {
 	width: 100%;
-	background-color: #000000;
-}
-
-
-.header .main {
-	display: flex;
+	transition: all 0.5s ease;
+	display: block;
+	text-align: center;
 	align-items: center;
 }
 
-.header .main a {
-	width: 132.4417px;
-	justify-content: right;
-	color: var(--text-color);
-	font-size: 1.1rem;
-	font-weight: 600;
-	transition: all .50s ease;
+.navbar a.active {
+    color: red; /* Изменяем цвет для активного элемента */
+    font-weight: bold; /* Можно сделать активный элемент жирным */
 }
 
 
-.main a:hover {
-	color: var(--main-color);
+.navbar-item:hover {
+    color: var(--main-color);
 }
 
 #menu-icon {
@@ -129,38 +96,60 @@ header {
 }
 
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
     #menu-icon {
         display: block;
+
     }
 
+	.navbar {
+	display: flex;
+	color: var(--main-color);
+	transform: scale(1.1);
+	width: 1000px;
+	justify-content: space-between;
+	gap: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	position: fixed;
+    top: 25px;
+	background-color: #a4fa8e;
+}
+
+.navbar a {
+	position: relative;
+	color: var(--text-color);
+	font-size: 1.1rem;
+	font-weight: 600;
+	transition: all .50s ease;
+	justify-content: center;
+}
+
+
     .navbar {
-        position: absolute;
-        top: 100%;
-        right: -100%;
+        position: fixed;
+        top: 10px;
+        right: -110%;
         width: 100%;
-        height: auto;
         background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(4px);
-        display: flex;
+        backdrop-filter: blur(10px);
         flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
         transition: all .50s ease;
         z-index: 99;
+		border: 2px solid #ccc;
     }
+
 
     .navbar.open {
         right: 0;
     }
 
     .navbar a {
-        display: block;
-        padding: 10px 0;
-        margin: 10px 0;
         text-align: center;
         width: 100%;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		height: 30px;
+		padding: 0;
+        margin: 0;
         transition: all .3s ease;
     }
 
@@ -178,123 +167,12 @@ header {
         display: none;
     }
 
-    .nav-touch-close {
-        display: block;
-    }
-}
-
-.nav-touch-close-open {
-    display: block;
-}
-
-.nav-touch-close {
-    position: fixed;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 98;
-}
-
-
-
-.column.left {
-	text-align: left;
-	max-width: 70%;
-}
-
-.column.right {
-	order: 1;
-	width: fit-content;
-	display: flex;
-	align-items: center;
-	justify-content: left;
-	padding-bottom: 40px;
-}
-
-.column.right img {
-    width: 230px;
-    height: 230px;
-    margin-left: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-
-.about .text {
-	font-size: 2rem;
-	font-weight: bold;
-	color: var(--text-color);
-}
-
-.about .iAm {
-	color: #4e54c8;
-}
-
-.about p {
-	font-size: 1.2rem;
-	font-weight: 500;
-	margin-top: 20px;
-	color: var(--text-color);
-}
-
-.about .buttons {
-	margin-top: 20px;
-	display: flex;
-	column-gap: 20px;
-}
-
-.about a {
-	display: inline-block;
-	padding: 10px 20px;
-	background-color: var(--main-color);
-	color: #fff;
-	text-decoration: none;
-	border-radius: 5px;
-	font-size: 1rem;
-	font-weight: 500;
-	transition: 0.3s;
-}
-
-
-.about .cm-button {
-	color: var(--text-color);
-	background-color: transparent;
-	outline: 2px solid var(--main-color);
-}
-
-.about .cm-button:hover {
-	color: white;
-	outline: none;
-}
-
-.nav-touch-close {
-	position: fixed;
-	display: none;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(255, 255, 255, 0.1);
-	backdrop-filter: blur(4px);
-	cursor: pointer;
-	z-index: 100;
-}
-
-@media (max-width: 1200px) {
-	header {
-		padding: 14px 2%;
-		transition: .2s;
-		justify-content: space-between;
+	#container1 {
+		max-width: 500px;
 	}
 
-	.navbar a {
-		padding: 5px 0;
-		margin: 0px 20px;
-	}
 }
+
 
 @media (max-width: 850px) {
 	.about-content {
@@ -340,42 +218,23 @@ header {
 	}
 }
 
-/* Стиль для активного элемента (после клика) */
-.navbar-item.active {
-    color: red !important;
-    background-color: transparent !important; /* Убираем фон, если нужно */
-}
 
-/* Для наибольшей специфичности */
-.navbar .navbar-item.active {
-    color: red !important;
-}
 
-/* Убираем конфликт с :hover */
-.navbar .navbar-item:hover {
-    color: var(--main-color);
-}
-
-.navbar .navbar-item:focus,
-.navbar .navbar-item.active {
-    color: red !important;
+.main-container a {
+    color: #6b6bfa !important;
 }
 
 .main-container a:visited {
-    color: #fd23c9 !important;
+    color: #fd46d1 !important;
 }
 
-
+/* Skills */
 #container1 {
-        min-width: 800px;
-        max-width: 1200px;
+        min-width: 400px;
+        width: 1000px;
         height: 70vh;
         margin: 0 auto;
     }
-
-.introduction-text {
-	text-align: justify;
-}
 
 .no-pointer {
 	pointer-events: none;
@@ -383,9 +242,13 @@ header {
 }
 
 .main-section {
-    padding-top: 95px;
     display: flex;
+	align-items: center;
     justify-content: center;
+	min-height: calc(100vh - 120px);
+	box-sizing: border-box;
+	padding-top: 100px;
+	padding-bottom: 50px;
 }
 
 .header-text {
@@ -396,11 +259,12 @@ header {
 	font-size: 1.5rem;
     font-weight: 600;
 	color: var(--main-color);
+	display: none;
 }
 
 .h2-name {
 	color: var(--main-color);
-	text-shadow: 0 0 5px var(--shadow-dark);
+	text-shadow: 0 0 10px var(--shadow-dark);
 	font-size: 1.2em;
 	font-weight: 600;
 }
@@ -448,7 +312,7 @@ header {
 }
 
 .content-section {
-	width: 1000px;
+	width: 80%;
 	padding-bottom: 10px;
 }
 
@@ -460,6 +324,7 @@ header {
 	flex-wrap: wrap;
 	row-gap: 30px;
 	column-gap: 20px;
+
 }
 
 
@@ -500,11 +365,6 @@ header {
 	min-height: 100px;
 }
 
-.fit-content {
-	width: fit-content;
-	height: 40px;
-}
-
 @media (max-width: 700px) {
 	.skills-group-row {
 		width: 85%;
@@ -512,20 +372,8 @@ header {
 	}
 }
 
-.container-text-center {
-	width: fit-content;
-	margin: 0 auto;
-}
-
-
-.page {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
 .footer {
+	position: fixed;
 	width: 100%;
 	height: 50px;
 	display: flex;
@@ -535,27 +383,25 @@ header {
 	column-gap: 10px;
 	padding: 10px 20px;
 	border-top: 2px solid #ccc;
-	background-color: var(--main-color);
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	background: rgba(255, 255, 255, 0.1);
-	backdrop-filter: blur(4px);
-	position: sticky;
+	backdrop-filter: blur(14px);
     bottom: 0;
 }
 
-.footer .left {
+.left {
 	font-size: 0.95rem;
 	font-weight: 500;
 	text-align: center;
 }
 
-.footer .right {
+.right {
 	display: flex;
 	flex-direction: row;
 	column-gap: 20px;
 }
 
-.footer .right .social {
+.social {
 	width: 30px;
 	height: 30px;
 	border: 2px solid var(--text-color);
@@ -564,7 +410,7 @@ header {
 	transition: 0.3s;
 }
 
-.footer .right .social a {
+.social a {
 	color: var(--text-color);
 	transition: 0.3s;
 	width: 100%;
@@ -575,12 +421,12 @@ header {
 	border-radius: 10px;
 }
 
-.footer .right .social:hover {
+.social:hover {
 	color: var(--main-color);
 	border: 2px solid var(--main-color);
 }
 
-.footer .right .social:hover a {
+.social:hover a {
 	color: var(--main-color);
 }
 
@@ -602,14 +448,14 @@ header {
 }
 
 @keyframes rainbow {
-    0% { color: red; }
-    14% { color: orange; }
-    28% { color: yellow; }
-    42% { color: green; }
-    57% { color: blue; }
-    71% { color: indigo; }
-    85% { color: violet; }
-    100% { color: red; }
+    0% { color: #fadc9f; }
+    14% { color: #f8f47c; }
+    28% { color: #fafa74; }
+    42% { color: #a4fa8e; }
+    57% { color: #bbf4fd; }
+    71% { color: #e2c1fa; }
+    85% { color: #faa5d5; }
+    100% { color: #fadc9f; }
 }
 
 .rainbow-text {

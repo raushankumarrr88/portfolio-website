@@ -19,28 +19,6 @@ navtc.onclick = () => {
 
 
 
-/* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function () {
-	var currentScrollPos = window.pageYOffset;
-
-	document.getElementById("header").classList.add('scrolled');
-	if (currentScrollPos === 0) {
-		// console.log("Hello");
-		document.getElementById("header").classList.remove('scrolled');
-	}
-	if (navtc.classList.contains('nav-touch-close-open')) {
-		return;
-	}
-	if (prevScrollpos > currentScrollPos) {
-		document.getElementById("header").style.top = "0";
-	} else {
-		document.getElementById("header").style.top = "-100px";
-	}
-	prevScrollpos = currentScrollPos;
-}
-
-
 const contactSection = document.querySelector('.contact-section');
 const formSection = document.querySelector('.form-section');
 const contactSubmitAfter = document.querySelector('.contact-submit-after');
