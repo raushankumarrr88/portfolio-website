@@ -91,7 +91,8 @@ body {
 }
 
 #menu-icon {
-    font-size: 35px;
+    font-size: 1.7rem;
+	font-weight: 600;
     color: var(--text-color);
     cursor: pointer;
     z-index: 114;
@@ -102,72 +103,43 @@ body {
 @media (max-width: 900px) {
     #menu-icon {
         display: block;
-
+		position: absolute;
+        top: 5px;
+        left: 10px;
     }
+	.header {
+		height: 50px;
+	}
 
 	.navbar {
-	display: flex;
-	color: var(--main-color);
-	transform: scale(1.1);
-	width: 1000px;
-	justify-content: space-between;
-	gap: 10px;
-	padding-left: 20px;
-	padding-right: 20px;
-	position: fixed;
-    top: 25px;
-	background-color: #a4fa8e;
-}
-
-.navbar a {
-	position: relative;
-	color: var(--text-color);
-	font-size: 1.1rem;
-	font-weight: 600;
-	transition: all .50s ease;
-	justify-content: center;
-}
-
-
-    .navbar {
-        position: fixed;
-        top: 10px;
-        right: -110%;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
+        display: none;
         flex-direction: column;
-        transition: all .50s ease;
-        z-index: 99;
+        width: 50%;
+        position: fixed;
+        top: 0;
+        background: var(--bg-color);
 		border: 2px solid #ccc;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        z-index: 999;
+        transition: all 0.5s ease;
     }
 
-
     .navbar.open {
-        right: 0;
+        display: flex !important;
     }
 
     .navbar a {
+        display: block;
+        padding: 3px 3px;
         text-align: center;
         width: 100%;
-		height: 30px;
-		padding: 0;
-        margin: 0;
-        transition: all .3s ease;
+		margin: 0;
+        background: none;
+        transition: background-color 0.3s ease;
     }
 
     .navbar a:hover {
-        color: var(--main-color);
-        background: rgba(255, 255, 255, 0.2);
-        transform: scale(1.05);
-    }
-
-    .navbar a::before {
-        display: none;
-    }
-
-    .navbar a::after {
-        display: none;
+        background-color: rgba(0, 0, 0, 0.1);
     }
 
 	#container1 {
