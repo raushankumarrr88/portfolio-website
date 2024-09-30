@@ -4,9 +4,7 @@ if (history.scrollRestoration) {
 
 window.onload = function() {
     window.scrollTo(0, 0);
-};
 
-document.addEventListener("DOMContentLoaded", function () {
     const currentUrl = window.location.href;
     const menuItems = document.querySelectorAll('.navbar a');
 
@@ -15,5 +13,18 @@ document.addEventListener("DOMContentLoaded", function () {
             menuItem.classList.add('active');
         }
     });
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+    const firstBlock = document.querySelector(
+        ".main-container-main-page .main-container:first-of-type"
+    );
+
+    if (firstBlock) {
+        const h3Name = firstBlock.querySelector('.h3-name');
+        if (h3Name) {
+            h3Name.classList.add("rainbow-text");
+        }
+    }
 });
 
