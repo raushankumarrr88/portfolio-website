@@ -239,14 +239,15 @@ body {
 
 .h2-name {
 	color: var(--main-color);
+	font-size: 1.1em;
 	text-shadow: 0 0 10px var(--shadow-dark);
 	font-weight: 600;
 }
 
 .h3-name {
-	color: var(--secondary-color);
+	color: var(--main-color);
 	text-shadow: 0 0 5px var(--shadow-dark);
-	font-weight: 400;
+	font-weight: 300;
 }
 
 .h4-name {
@@ -442,6 +443,7 @@ body {
 
 .main-container:hover {
     transform: scale(1.1) !important;
+	cursor: pointer;
 }
 
 .education-description {
@@ -455,6 +457,7 @@ body {
 
 .main-container.selected:hover {
     transform: none !important;
+	cursor: default;
 }
 
 .main-container.selected .education-description {
@@ -473,4 +476,5 @@ body {
 
 .main-container.selected .close-btn {
     display: block;
+	cursor: pointer;
 }
