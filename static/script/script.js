@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const closeButton = menuElement.querySelector(".menu-close-btn");
   const navbar = document.querySelector(".navbar");
 
-  menuText.addEventListener("click", function() {
+  menuIcon.addEventListener("click", function() {
     menuElement.classList.add("menu-opened");
     navbar.classList.add("open");
     menuIcon.style.display = "none";
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     menuIcon.style.display = "inline-block";
   });
 
-  const navbarItems = document.querySelectorAll('.navbar-item');
+  const navbarItems = document.querySelectorAll(".navbar-item");
   const currentUrl = window.location.href;
   navbarItems.forEach(item => {
     if (item.href === currentUrl) {
