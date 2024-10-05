@@ -16,7 +16,7 @@
     border-radius: 50%;
     border: 2px solid #161515;
     object-fit: cover;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 :root {
@@ -80,7 +80,7 @@ body {
 .navbar a.active {
     color: var(--main-color);
     font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
     pointer-events: none;
 }
 
