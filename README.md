@@ -1,2 +1,1 @@
-ritoncharlox
-Responsive-Portfolio-Website
+# Portfolio Website by alona_s
