@@ -2,3 +2,5 @@
 db.sqlite3
 venv/
 portfolio_app/migrations/
+.env
+__pycache__/
